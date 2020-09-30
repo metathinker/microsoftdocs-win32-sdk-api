@@ -47,19 +47,35 @@ api_name:
 
 # IProtectionPolicyManagerInterop interface
 
-
 ## -description
 
+Gives desktop applications access to some static methods of
+**[Windows.Security.EnterpriseData.ProtectionPolicyManager](
+ /uwp/api/windows.security.enterprisedata.protectionpolicymanager)**
+that are otherwise available only to Universal Windows Platform apps.
+
 <div class="alert"><b>Note</b>  Windows Information Protection (WIP) policy can be applied on Windows 10, version 1607.</div>
-<div> </div>Manages enterprise protection policy on protected content.
 
 ## -inheritance
 
-The <b xmlns:loc="http://microsoft.com/wdcml/l10n">IProtectionPolicyManagerInterop</b> interface inherits from the <a href="https://docs.microsoft.com/windows/desktop/api/unknwn/nn-unknwn-iunknown">IUnknown</a> interface. <b>IProtectionPolicyManagerInterop interface</b> also has these types of members:
-<ul>
-<li><a href="https://docs.microsoft.com/">Methods</a></li>
-</ul>
+The **IProtectionPolicyManagerInterop** interface inherits from the **[IInspectable](../inspectable/nn-inspectable-iinspectable)** interface.
 
+## -remarks
+
+This interface is implemented by **ProtectionPolicyManager**'s [activation factory](../activation/nn-activation-iactivationfactory).
+To get an object of this interface, get a reference to the activation factory and then call
+[IUnknown::QueryInterface](../unknwn/nf-unknwn-iunknown-queryinterface%28refiid_void%29)
+on that reference:
+
+```cppwinrt
+using winrt::Windows::Security::EnterpriseData::ProtectionPolicyManager;
+
+auto managerFactory = winrt::get_activation_factory<ProtectionPolicyManager>();
+winrt::com_ptr<IProtectionPolicyManagerInterop> managerInterop{ managerFactory.as<IProtectionPolicyManagerInterop>() };
+// You can now call methods of IProtectionPolicyManagerInterop on `managerInterop`.
+```
+
+<!--
 ## -members
 
 The <b>IProtectionPolicyManagerInterop</b> interface has these methods.
@@ -88,3 +104,4 @@ Request access to enterprise protected content for an identity.
 </tr>
 </table>
 
+-->

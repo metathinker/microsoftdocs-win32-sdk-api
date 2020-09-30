@@ -50,22 +50,42 @@ api_name:
 
 ## -description
 
+Returns the **[ProtectionPolicyManager](
+ /uwp/api/windows.security.enterprisedata.protectionpolicymanager)**
+object associated with the given window.
+
 <div class="alert"><b>Note</b>  Windows Information Protection (WIP) policy can be applied on Windows 10, version 1607.</div>
-<div> </div>Returns the protection policy manager object associated with the current app window.
 
 ## -parameters
 
 ### -param appWindow [in]
 
-A handle to the current window.
+Type: **[HWND](/windows/win32/winprog/windows-data-types)**
+
+The window to get the **ProtectionPolicyManager** for.
 
 ### -param riid [iid_is] [in, retval]
 
- Reference to the identifier of the interface describing the type of interface pointer to return in <i>result</i>.
+Type: **REFIID**
+
+Must refer to the [interface identifier (IID)](
+/openspecs/windows_protocols/ms-oaut/5583e1b8-454c-4147-9f56-f72416a15bee#gt_76ad3105-3f05-479d-a40c-c9c8fa2ebd83) 
+for the interface **IProtectionPolicyManager**, which is implemented by
+**ProtectionPolicyManager**.
+
+This IID can be found in the [Microsoft Interface Definition Language (MIDL)](/windows/win32/midl/midl-start-page)
+file for the **Windows.Security.EnterpriseData** namespace. For convenience, it is repeated below:
+
+```
+D5703E18-A08D-47E6-A240-9934D7165EB5
+```
 
 ### -param result
 
-The protection policy manager object for the current window.
+Type: **void\*\***
+
+The address of a pointer to **IProtectionPolicyManager**. On successful return from this method,
+the pointer will be set to the protection policy manager object for the given window.
 
 ## -returns
 
